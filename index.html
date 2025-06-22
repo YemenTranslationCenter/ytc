@@ -2,157 +2,371 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Mohammed Alduais | Arabic Tutoring & Language Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yemen Translation Center | المركز اليمني للترجمة</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-	<a href="https://wa.me/967775900315" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f0f0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #222;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
     .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(44,62,80,0.12);
+      padding: 40px 24px;
       display: flex;
-      min-height: 100vh;
+      flex-wrap: wrap;
+      gap: 32px;
+      animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
     }
-    .half {
-      flex: 1;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
     }
-    .left {
-      background: #0a5c91;
-      color: white;
-      text-align: left;
-    }
-    .right {
-      background: #ffffff;
-      color: #0a5c91;
-      text-align: right;
-      direction: rtl;
-    }
-    .logo {
-      text-align: center;
+    .col {
+      flex: 1 1 420px;
+      min-width: 320px;
+      padding: 24px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+      box-shadow: 0 2px 12px rgba(44,62,80,0.08);
       margin-bottom: 20px;
+      transition: box-shadow 0.3s;
     }
-    .logo img {
-      max-width: 150px;
-      filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3));
+    .col:hover {
+      box-shadow: 0 8px 32px rgba(44,62,80,0.18);
     }
-    h1, h2 {
-      margin-bottom: 20px;
+    .col[dir="rtl"] {
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(120deg, #fdf6e3 0%, #f5e1da 100%);
     }
-    p, li {
-      margin-bottom: 10px;
+    h1, h2, h3 {
+      margin-top: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    ul {
-      list-style: none;
-    }
-    .services li {
-      margin-bottom: 10px;
-    }
-	.whatsapp-float {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 20px;
-  left: 20px;
-  background-color: #25D366;
-  color: white;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 30px;
-  line-height: 60px;
-  z-index: 100;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
-}
-.whatsapp-float:hover {
-  background-color: #1ebe5b;
-}
-
-    .contact-info {
-      margin-top: 30px;
-      font-size: 15px;
-    }
-    .contact-info p {
+    h1 {
+      font-size: 2.5rem;
+      color: #0e6ba8;
       margin-bottom: 8px;
     }
-    .contact-info i {
-      margin-right: 8px;
+    h2 {
+      font-size: 1.5rem;
+      color: #3a3a3a;
+      margin-bottom: 12px;
     }
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
+    h3 {
+      font-size: 1.1rem;
+      color: #0e6ba8;
+      margin-bottom: 8px;
+    }
+    p {
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+    ul, ol {
+      padding-left: 20px;
+      margin: 0 0 18px 0;
+    }
+    .services-list, .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+    }
+    .services-list li, .contact-list li {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .services-list i, .contact-list i {
+      color: #0e6ba8;
+      min-width: 22px;
+      font-size: 1.2em;
+    }
+    .curriculum-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 18px;
+      font-size: 0.98em;
+    }
+    .curriculum-table th, .curriculum-table td {
+      border: 1px solid #e0e0e0;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .curriculum-table th {
+      background: #eaf6fb;
+      color: #0e6ba8;
+      font-weight: 700;
+    }
+    .curriculum-table[dir="rtl"] td, .curriculum-table[dir="rtl"] th {
+      text-align: right;
+      font-family: 'Cairo', Arial, sans-serif;
+    }
+    .section-title {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+      color: #0e6ba8;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .cta {
+      background: linear-gradient(90deg, #0e6ba8 0%, #3aafa9 100%);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 18px;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+      transition: background 0.2s;
+      display: inline-block; /* To make sure padding applies correctly */
+      text-decoration: none; /* Remove underline from link */
+    }
+    .cta:hover {
+      background: linear-gradient(90deg, #3aafa9 0%, #0e6ba8 100%);
+    }
+
+    /* --- WhatsApp Floating Button Styles --- */
+    .whatsapp-float { /* Changed from _float to -float for consistency */
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 32px;
+      right: 32px;
+      background-color: #25d366; /* WhatsApp green */
+      color: #FFF;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 38px;
+      box-shadow: 2px 2px 8px #999;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none; /* Remove underline */
+      transition: box-shadow 0.2s, transform 0.2s; /* Apply transition for hover */
+      animation: pulse 2s infinite; /* Pulsing animation */
+    }
+
+    .whatsapp-float:hover {
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4); /* Softer shadow on hover */
+      transform: scale(1.08);
+      background: #128c7e; /* Darker green on hover */
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Green shadow for pulse */
       }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); /* Fade out shadow */
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Optional: If you prefer a bouncing animation instead of pulsing */
+    /*
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+    */
+
+    @keyframes floatIn { /* This animation was not applied to .whatsapp-float in your original code, only defined */
+      from { opacity: 0; transform: scale(0.7) translateY(80px);}
+      to { opacity: 1; transform: scale(1) translateY(0);}
+    }
+
+    @media (max-width: 900px) {
+      .container { flex-direction: column; gap: 0;}
+      .col { min-width: unset; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 12px;}
+      .col { padding: 12px;}
+      .whatsapp-float { width: 48px; height: 48px; font-size: 26px; bottom: 16px; right: 12px;}
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="half left">
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
-    </div>
-    <h1>Yemen Translation Center</h1>
-    <h2>Professional Translation Services</h2>
-    <p>We provide translation, interpretation, transcription, subtitling, content creation, and data entry 24/7.</p>
-    <div class="services">
-      <ul>
-        <li><i class="fas fa-globe"></i> Translation (Arabic-English)</li>
-        <li><i class="fas fa-microphone"></i> Interpretation</li>
-        <li><i class="fas fa-pen"></i> Transcription & Subtitling</li>
-        <li><i class="fas fa-edit"></i> Content Creation</li>
-        <li><i class="fas fa-database"></i> Data Entry</li>
+  <div class="container">
+    <div class="col" dir="ltr" lang="en">
+      <h1><i class="fa fa-language"></i> Mohammed Alduais</h1>
+      <h2>Language Services & Arabic Tutoring</h2>
+      <ul class="services-list">
+        <li><i class="fa fa-globe"></i> Translation</li>
+        <li><i class="fa fa-comments"></i> Interpretation</li>
+        <li><i class="fa fa-keyboard-o"></i> Transcription</li>
+        <li><i class="fa fa-film"></i> Subtitling</li>
+        <li><i class="fa fa-pencil"></i> Content Creation</li>
+        <li><i class="fa fa-database"></i> Data Entry</li>
       </ul>
+      <div class="section-title">Available 24/7</div>
+      <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> Arabic Language Tutoring</h2>
+      <p>I offer professional Arabic language tutoring for all levels—beginner, intermediate, and advanced—using a structured curriculum tailored to each stage. My approach combines proven teaching methodologies with modern technology for effective, engaging, and interactive online learning.</p>
+      <h3>Curriculum Structure</h3>
+      <table class="curriculum-table">
+        <tr>
+          <th>Level</th>
+          <th>Focus Areas</th>
+          <th>Materials/Texts</th>
+        </tr>
+        <tr>
+          <td>Beginner</td>
+          <td>Alphabet, pronunciation, basic vocabulary, simple sentences, reading & writing fundamentals</td>
+          <td>Noor Al-Bayaan, Iqraa’</td>
+        </tr>
+        <tr>
+          <td>Intermediate</td>
+          <td>Grammar, expanded vocabulary, conversation, comprehension, practical scenarios</td>
+          <td>Al-‘Arabiyyah Bayn Yadayk</td>
+        </tr>
+        <tr>
+          <td>Advanced</td>
+          <td>Complex grammar, advanced reading, writing, societal topics, classical texts</td>
+          <td>Custom materials</td>
+        </tr>
+      </table>
+      <h3>Online Teaching Methods</h3>
+      <ul>
+        <li>Interactive activities: role-plays, debates, group discussions, games</li>
+        <li>Multimedia integration: videos, audio, and visual aids</li>
+        <li>Task-based learning: real-life assignments and projects</li>
+        <li>Communicative Language Teaching (CLT): practical communication</li>
+        <li>Personalized feedback and regular progress assessments</li>
+        <li>Use of digital tools: online platforms, whiteboards, and language apps</li>
+        <li>Cultural immersion: traditions, customs, and history</li>
+      </ul>
+      <h3>Remote Class Features</h3>
+      <ul>
+        <li>Flexible scheduling</li>
+        <li>Live virtual sessions via reliable platforms</li>
+        <li>Resource sharing: digital textbooks, worksheets, and more</li>
+        <li>Progress tracking and regular reports</li>
+        <li>Support outside class: email and messaging</li>
+      </ul>
+      <h3>Who Can Benefit?</h3>
+      <ul>
+        <li>Absolute beginners</li>
+        <li>Students aiming to improve academic or professional Arabic</li>
+        <li>Professionals working with Arabic-speaking clients</li>
+        <li>Travelers, expatriates, or anyone interested in Arabic language and culture</li>
+      </ul>
+      <h2 style="margin-top:32px;">Contact</h2>
+      <ul class="contact-list">
+        <li><i class="fa fa-phone"></i> +967 775-900-315</li>
+        <li><i class="fa fa-whatsapp"></i> WhatsApp Available</li>
+        <li><i class="fa fa-envelope"></i> mohammed.alduais@gmail.com</li>
+        <li><i class="fa fa-skype"></i> shandalan</li>
+        <li><i class="fa fa-paypal"></i> al_muafa@yahoo.com</li>
+      </ul>
+      <a href="https://wa.me/967775900315" class="cta" target="_blank"><i class="fa fa-whatsapp"></i> Message on WhatsApp</a>
     </div>
-    <div class="contact-info">
-      <p><i class="fas fa-user"></i> Mohammed Alduais</p>
-      <p><i class="fas fa-phone"></i> +967 775-900-315</p>
-      <p><i class="fab fa-whatsapp"></i> WhatsApp Available</p>
-      <p><i class="fas fa-envelope"></i> mohammed.alduais@gmail.com</p>
-      <p><i class="fab fa-skype"></i> shandalan</p>
-      <p><i class="fab fa-paypal"></i> al_muafa@yahoo.com</p>
+
+    <div class="col" dir="rtl" lang="ar">
+      <h1><i class="fa fa-language"></i> محمد الدعيس</h1>
+      <h2>خدمات اللغة ودروس العربية</h2>
+      <ul class="services-list">
+        <li><i class="fa fa-globe"></i> الترجمة</li>
+        <li><i class="fa fa-comments"></i> الترجمة الفورية</li>
+        <li><i class="fa fa-keyboard-o"></i> التفريغ</li>
+        <li><i class="fa fa-film"></i> الترجمة المرئية</li>
+        <li><i class="fa fa-pencil"></i> صناعة المحتوى</li>
+        <li><i class="fa fa-database"></i> إدخال البيانات</li>
+      </ul>
+      <div class="section-title">متوفرون على مدار الساعة</div>
+      <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> دروس اللغة العربية</h2>
+      <p>أقدم دروسًا احترافية في اللغة العربية لجميع المستويات (مبتدئ، متوسط، متقدم) باستخدام منهجية منظمة لكل مرحلة. أعتمد في تدريسي على أساليب حديثة وتقنيات متطورة لضمان تعلم فعال وتفاعلي عبر الإنترنت.</p>
+      <h3>هيكل المنهج</h3>
+      <table class="curriculum-table" dir="rtl">
+        <tr>
+          <th>المستوى</th>
+          <th>مجالات التركيز</th>
+          <th>المواد/الكتب</th>
+        </tr>
+        <tr>
+          <td>مبتدئ</td>
+          <td>الحروف، النطق، المفردات الأساسية، الجمل البسيطة، أساسيات القراءة والكتابة</td>
+          <td>نور البيان، اقرأ</td>
+        </tr>
+        <tr>
+          <td>متوسط</td>
+          <td>القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
+          <td>العربية بين يديك</td>
+        </tr>
+        <tr>
+          <td>متقدم</td>
+          <td>القواعد المتقدمة، القراءة والكتابة المتقدمة، مناقشة قضايا المجتمع، نصوص كلاسيكية</td>
+          <td>مواد مخصصة</td>
+        </tr>
+      </table>
+      <h3>طرق التدريس عبر الإنترنت</h3>
+      <ul>
+        <li>أنشطة تفاعلية: تمثيل أدوار، مناظرات، نقاشات جماعية، ألعاب تعليمية</li>
+        <li>دمج الوسائط المتعددة: فيديوهات، تسجيلات صوتية، وسائل بصرية</li>
+        <li>تعلم قائم على المهام: تطبيقات ومشاريع عملية</li>
+        <li>التدريس التواصلي: التركيز على التواصل العملي</li>
+        <li>تغذية راجعة شخصية وتقييمات دورية</li>
+        <li>استخدام الأدوات الرقمية: منصات تعليمية، سبورات إلكترونية، تطبيقات لغوية</li>
+        <li>الانغماس الثقافي: التعرف على العادات والتقاليد والتاريخ</li>
+      </ul>
+      <h3>مزايا الدروس عن بعد</h3>
+      <ul>
+        <li>جدولة مرنة</li>
+        <li>جلسات مباشرة عبر منصات موثوقة</li>
+        <li>مشاركة الموارد: كتب رقمية، أوراق عمل، مواد إضافية</li>
+        <li>متابعة التقدم وتقديم تقارير دورية</li>
+        <li>دعم خارج أوقات الدرس: عبر البريد أو الرسائل</li>
+      </ul>
+      <h3>لمن هذه الدروس؟</h3>
+      <ul>
+        <li>المبتدئون تمامًا</li>
+        <li>الطلاب الراغبون في تطوير مهاراتهم الأكاديمية أو المهنية بالعربية</li>
+        <li>المحترفون المتعاملون مع عملاء أو شركاء ناطقين بالعربية</li>
+        <li>المسافرون أو المهتمون باللغة والثقافة العربية</li>
+      </ul>
+      <h2 style="margin-top:32px;">للتواصل</h2>
+      <ul class="contact-list">
+        <li><i class="fa fa-phone"></i> <span dir="ltr" style="unicode-bidi: isolate;">+967 775-900-315</span></li>
+        <li><i class="fa fa-whatsapp"></i> واتساب متاح</li>
+        <li><i class="fa fa-envelope"></i> mohammed.alduais@gmail.com</li>
+        <li><i class="fa fa-skype"></i> shandalan</li>
+        <li><i class="fa fa-paypal"></i> al_muafa@yahoo.com</li>
+      </ul>
+      <a href="https://wa.me/967775900315" class="cta" target="_blank"><i class="fa fa-whatsapp"></i> تواصل عبر واتساب</a>
     </div>
   </div>
 
-  <div class="half right">
-    <div class="logo">
-      <img src="logo.png" alt="شعار">
-    </div>
-    <h1>المركز اليمني للترجمة</h1>
-    <h2>خدمات الترجمة الاحترافية</h2>
-    <p>نقدم خدمات الترجمة، الترجمة الفورية، التفريغ، الترجمة المرئية، صناعة المحتوى وإدخال البيانات على مدار الساعة.</p>
-    <div class="services">
-      <ul>
-        <li><i class="fas fa-globe"></i> الترجمة بين العربية والإنجليزية</li>
-        <li><i class="fas fa-microphone"></i> الترجمة الفورية</li>
-        <li><i class="fas fa-pen"></i> التفريغ والترجمة المرئية</li>
-        <li><i class="fas fa-edit"></i> صناعة المحتوى</li>
-        <li><i class="fas fa-database"></i> إدخال البيانات</li>
-      </ul>
-    </div>
-    <div class="contact-info">
-      <p><i class="fas fa-user"></i> محمد الدعيس</p>
-	<p><i class="fas fa-phone"></i> <span dir="ltr" style="unicode-bidi: isolate; display: inline-block;">+967 775-900-315</span></p>
-      <p><i class="fab fa-whatsapp"></i> واتساب</p>
-      <p><i class="fas fa-envelope"></i> mohammed.alduais@gmail.com</p>
-      <p><i class="fab fa-skype"></i> shandalan</p>
-      <p><i class="fab fa-paypal"></i> al_muafa@yahoo.com</p>
-    </div>
-  </div>
-</div>
-
+  <a href="https://wa.me/967775900315" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <i class="fa fa-whatsapp"></i>
+  </a>
 </body>
 </html>
