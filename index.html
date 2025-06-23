@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-	    @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+        @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 
         body {
             margin: 0;
@@ -29,7 +29,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 32px;
-            animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+            animation: fadeIn 2.2s cubic-bezier(.4,0,.2,1);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(40px);}
@@ -49,19 +49,16 @@
             box-shadow: 0 8px 32px rgba(44,62,80,0.18);
         }
         .col[dir="rtl"] {
-            /* Default fallback Arabic font for the column */
             font-family: 'Cairo', Arial, sans-serif;
             background: linear-gradient(120deg, #fdf6e3 0%, #f5e1da 100%);
         }
 
-        /* Styling for all titles (English and Arabic) */
         h1, h2, h3 {
             margin-top: 0;
             font-weight: 700;
             letter-spacing: 1px;
             color: #DC143C; /* Crimson Red color for titles */
         }
-        /* Pulsing animation for main H1 titles only */
         h1 {
             font-size: 2.5rem;
             margin-bottom: 8px;
@@ -140,46 +137,42 @@
         /* --- Curriculum Table High-End Styling --- */
         .curriculum-table {
             width: 100%;
-            border-collapse: separate; /* Use separate for rounded corners */
-            border-spacing: 0; /* Remove space between cells */
+            border-collapse: separate;
+            border-spacing: 0;
             margin-bottom: 18px;
             font-size: 0.98em;
-            overflow: hidden; /* Ensures rounded corners apply */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Soft shadow for depth */
-            border-radius: 12px; /* Rounded corners for the whole table */
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
         }
         .curriculum-table th, .curriculum-table td {
-            padding: 12px 15px; /* More padding for better spacing */
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #e0e0e0; /* Light border between rows */
+            border-bottom: 1px solid #e0e0e0;
         }
         .curriculum-table thead th {
-            background: linear-gradient(90deg, #DC143C 0%, #b20e2e 100%); /* Crimson gradient for header */
-            color: #fff; /* White text for header */
+            background: linear-gradient(90deg, #DC143C 0%, #b20e2e 100%);
+            color: #fff;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
-        /* Solid background for table body rows */
         .curriculum-table tbody tr {
-            background-color: #fcfcfc; /* A very light, almost white background */
+            background-color: #fcfcfc;
             transition: background-color 0.3s ease;
         }
         .curriculum-table tbody tr:hover {
-            background-color: #e6f7ff; /* Subtle hover effect (light blue) */
+            background-color: #e6f7ff;
         }
-        /* Specific rounded corners for the table header */
         .curriculum-table th:first-child {
             border-top-left-radius: 12px;
         }
         .curriculum-table th:last-child {
             border-top-right-radius: 12px;
         }
-        /* Remove bottom border for the last row cells */
         .curriculum-table tbody tr:last-child td {
             border-bottom: none;
         }
-        /* Specific rounded corners for the table body (if only one row) */
         .curriculum-table tbody tr:only-child td:first-child {
             border-bottom-left-radius: 12px;
         }
@@ -190,9 +183,8 @@
         .curriculum-table[dir="rtl"] th,
         .curriculum-table[dir="rtl"] td {
             text-align: right;
-            font-family: 'Cairo', Arial, sans-serif; /* Ensures table content remains Cairo if not explicitly Amiri */
+            font-family: 'Cairo', Arial, sans-serif;
         }
-        /* RTL specific rounded corners for header */
         .curriculum-table[dir="rtl"] th:first-child {
             border-top-right-radius: 12px;
             border-top-left-radius: 0;
@@ -201,7 +193,6 @@
             border-top-left-radius: 12px;
             border-top-right-radius: 0;
         }
-        /* RTL specific rounded corners for tbody (if only one row) */
         .curriculum-table[dir="rtl"] tbody tr:only-child td:first-child {
             border-bottom-right-radius: 12px;
             border-bottom-left-radius: 0;
@@ -278,13 +269,39 @@
             .col { padding: 12px;}
             .whatsapp-float { width: 48px; height: 48px; font-size: 26px; bottom: 16px; right: 12px;}
         }
+
+        /* --- Waving Words Animation Styles --- */
+        .animated-h2 {
+            display: inline-flex; 
+            flex-wrap: wrap;
+            gap: 0; /* Changed back to 0 for no space between words */
+        }
+
+        .animated-h2 span {
+            display: inline-block;
+            animation: wave 9s ease-in-out infinite; /* Speed decreased by 50% (duration is doubled) */
+            animation-delay: var(--delay);
+            color: #4169E1; /* Royal Blue color applied here */
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-5px);
+            }
+            75% {
+                transform: translateY(5px);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="col" dir="ltr" lang="en">
             <h1><i class="fa fa-language"></i> Lingo Seekers</h1>
-            <h2>Language Services & Arabic Tutoring</h2>
+            <h2 class="animated-h2" data-text="Language Services & Arabic Tutoring"></h2>
             <ul class="services-list">
                 <li><i class="fa fa-globe"></i> Translation</li>
                 <li><i class="fa fa-comments"></i> Interpretation</li>
@@ -296,7 +313,7 @@
             <div class="section-title">Available 24/7</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> Arabic Language Tutoring</h2>
             <p>I offer professional Arabic language tutoring for all levels—beginner, intermediate, and advanced—using a structured curriculum tailored to each stage. My approach combines proven teaching methodologies with modern technology for effective, engaging, and interactive online learning.</p>
-            <h3>Curriculum Structure</h3>
+            <h3 class="section-title"><i class="fa fa-book"></i> Curriculum Structure</h3>
             <table class="curriculum-table">
                 <thead>
                     <tr>
@@ -315,6 +332,11 @@
                         <td>Intermediate</td>
                         <td>Grammar, expanded vocabulary, conversation, comprehension, practical scenarios</td>
                         <td>Al-‘Arabiyyah Bayn Yadayk</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced</td>
+                        <td>Complex grammar, advanced reading, writing, societal topics, classical texts</td>
+                        <td>Custom materials</td>
                     </tr>
                 </tbody>
             </table>
@@ -355,7 +377,7 @@
         </div>
         <div class="col" dir="rtl" lang="ar">
             <h1><i class="fa fa-language"></i> مستكشفو اللغة</h1>
-            <h2>خدمات اللغة ودروس العربية</h2>
+            <h2 class="animated-h2" data-text="خدمات اللغة ودروس العربية"></h2>
             <ul class="services-list">
                 <li><i class="fa fa-globe"></i> الترجمة</li>
                 <li><i class="fa fa-comments"></i> الترجمة الفورية</li>
@@ -367,7 +389,7 @@
             <div class="section-title">متوفرون على مدار الساعة</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> دروس اللغة العربية</h2>
             <p>أقدم دروسًا احترافية في اللغة العربية لجميع المستويات (مبتدئ، متوسط، متقدم) باستخدام منهجية منظمة لكل مرحلة. أعتمد في تدريسي على أساليب حديثة وتقنيات متطورة لضمان تعلم فعال وتفاعلي عبر الإنترنت.</p>
-            <h3>هيكل المنهج</h3>
+            <h3 class="section-title"><i class="fa fa-book"></i> هيكل المنهج</h3>
             <table class="curriculum-table" dir="rtl">
                 <thead>
                     <tr>
@@ -386,11 +408,6 @@
                         <td>متوسط</td>
                         <td>القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
                         <td>العربية بين يديك</td>
-                    </tr>
-                    <tr>
-                        <td>متقدم</td>
-                        <td>القواعد المتقدمة، القراءة والكتابة المتقدمة، مناقشة قضايا المجتمع، نصوص كلاسيكية</td>
-                        <td>مواد مخصصة</td>
                     </tr>
                 </tbody>
             </table>
@@ -433,5 +450,29 @@
     <a href="https://wa.me/967775900315" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
         <i class="fa fa-whatsapp"></i>
     </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedH2s = document.querySelectorAll('.animated-h2');
+
+            animatedH2s.forEach((h2Element, h2Index) => {
+                const text = h2Element.dataset.text;
+                h2Element.innerHTML = ''; // Clear existing content
+
+                // Split text into words (handle multiple spaces)
+                const words = text.split(/\s+/).filter(word => word.length > 0);
+
+                words.forEach((word, wordIndex) => {
+                    const span = document.createElement('span');
+                    span.textContent = word; // Place the entire word in the span
+
+                    // Calculate delay for each word to create the wave effect
+                    const delay = (h2Index * 0.5) + (wordIndex * 0.15); 
+                    span.style.setProperty('--delay', `${delay}s`);
+                    h2Element.appendChild(span);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
