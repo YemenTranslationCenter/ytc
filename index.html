@@ -5,9 +5,11 @@
     <title>Lingo Seekers | Arabic Tutoring & Language Services</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+	    @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
         body {
             margin: 0;
             padding: 0;
@@ -47,16 +49,19 @@
             box-shadow: 0 8px 32px rgba(44,62,80,0.18);
         }
         .col[dir="rtl"] {
+            /* Default fallback Arabic font for the column */
             font-family: 'Cairo', Arial, sans-serif;
             background: linear-gradient(120deg, #fdf6e3 0%, #f5e1da 100%);
         }
+
+        /* Styling for all titles (English and Arabic) */
         h1, h2, h3 {
             margin-top: 0;
             font-weight: 700;
             letter-spacing: 1px;
             color: #DC143C; /* Crimson Red color for titles */
         }
-        /* Pulsing animation for main titles only */
+        /* Pulsing animation for main H1 titles only */
         h1 {
             font-size: 2.5rem;
             margin-bottom: 8px;
@@ -68,6 +73,20 @@
             50% { transform: scale(1); }
             75% { transform: scale(1.01); }
             100% { transform: scale(1); }
+        }
+
+        /* Specific font style for Arabic titles (h2, h3, .section-title) */
+        .col[dir="rtl"] h2,
+        .col[dir="rtl"] h3,
+        .col[dir="rtl"] .section-title {
+            font-family: 'Amiri', 'Cairo', serif; /* Amiri as primary, Cairo as fallback */
+            font-weight: 700; /* Ensuring boldness */
+        }
+
+        /* Specific font style for the main Arabic H1 title "مستكشفو اللغة" */
+        .col[dir="rtl"] h1 {
+            font-family: 'Droid Arabic Kufi', sans-serif; /* Droid Arabic Kufi for the main title */
+            font-weight: 700; /* Ensuring boldness */
         }
 
         h2 {
@@ -117,26 +136,81 @@
         .section-title i {
             color: #28a745; /* Green color for new section title icons */
         }
+        
+        /* --- Curriculum Table High-End Styling --- */
         .curriculum-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate; /* Use separate for rounded corners */
+            border-spacing: 0; /* Remove space between cells */
             margin-bottom: 18px;
             font-size: 0.98em;
+            overflow: hidden; /* Ensures rounded corners apply */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Soft shadow for depth */
+            border-radius: 12px; /* Rounded corners for the whole table */
         }
         .curriculum-table th, .curriculum-table td {
-            border: 1px solid #e0e0e0;
-            padding: 8px 10px;
+            padding: 12px 15px; /* More padding for better spacing */
             text-align: left;
+            border-bottom: 1px solid #e0e0e0; /* Light border between rows */
         }
-        .curriculum-table th {
-            background: #eaf6fb;
-            color: #DC143C; /* Crimson Red color for table headers */
+        .curriculum-table thead th {
+            background: linear-gradient(90deg, #DC143C 0%, #b20e2e 100%); /* Crimson gradient for header */
+            color: #fff; /* White text for header */
             font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        .curriculum-table[dir="rtl"] td, .curriculum-table[dir="rtl"] th {
+        /* Solid background for table body rows */
+        .curriculum-table tbody tr {
+            background-color: #fcfcfc; /* A very light, almost white background */
+            transition: background-color 0.3s ease;
+        }
+        .curriculum-table tbody tr:hover {
+            background-color: #e6f7ff; /* Subtle hover effect (light blue) */
+        }
+        /* Specific rounded corners for the table header */
+        .curriculum-table th:first-child {
+            border-top-left-radius: 12px;
+        }
+        .curriculum-table th:last-child {
+            border-top-right-radius: 12px;
+        }
+        /* Remove bottom border for the last row cells */
+        .curriculum-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        /* Specific rounded corners for the table body (if only one row) */
+        .curriculum-table tbody tr:only-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
+        .curriculum-table tbody tr:only-child td:last-child {
+            border-bottom-right-radius: 12px;
+        }
+
+        .curriculum-table[dir="rtl"] th,
+        .curriculum-table[dir="rtl"] td {
             text-align: right;
-            font-family: 'Cairo', Arial, sans-serif;
+            font-family: 'Cairo', Arial, sans-serif; /* Ensures table content remains Cairo if not explicitly Amiri */
         }
+        /* RTL specific rounded corners for header */
+        .curriculum-table[dir="rtl"] th:first-child {
+            border-top-right-radius: 12px;
+            border-top-left-radius: 0;
+        }
+        .curriculum-table[dir="rtl"] th:last-child {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 0;
+        }
+        /* RTL specific rounded corners for tbody (if only one row) */
+        .curriculum-table[dir="rtl"] tbody tr:only-child td:first-child {
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 0;
+        }
+        .curriculum-table[dir="rtl"] tbody tr:only-child td:last-child {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 0;
+        }
+
         .cta {
             background: linear-gradient(90deg, #0e6ba8 0%, #3aafa9 100%);
             color: #fff;
@@ -224,26 +298,25 @@
             <p>I offer professional Arabic language tutoring for all levels—beginner, intermediate, and advanced—using a structured curriculum tailored to each stage. My approach combines proven teaching methodologies with modern technology for effective, engaging, and interactive online learning.</p>
             <h3>Curriculum Structure</h3>
             <table class="curriculum-table">
-                <tr>
-                    <th>Level</th>
-                    <th>Focus Areas</th>
-                    <th>Materials/Texts</th>
-                </tr>
-                <tr>
-                    <td>Beginner</td>
-                    <td>Alphabet, pronunciation, basic vocabulary, simple sentences, reading & writing fundamentals</td>
-                    <td>Noor Al-Bayaan, Iqraa’</td>
-                </tr>
-                <tr>
-                    <td>Intermediate</td>
-                    <td>Grammar, expanded vocabulary, conversation, comprehension, practical scenarios</td>
-                    <td>Al-‘Arabiyyah Bayn Yadayk</td>
-                </tr>
-                <tr>
-                    <td>Advanced</td>
-                    <td>Complex grammar, advanced reading, writing, societal topics, classical texts</td>
-                    <td>Custom materials</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Focus Areas</th>
+                        <th>Materials/Texts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Beginner</td>
+                        <td>Alphabet, pronunciation, basic vocabulary, simple sentences, reading & writing fundamentals</td>
+                        <td>Noor Al-Bayaan, Iqraa’</td>
+                    </tr>
+                    <tr>
+                        <td>Intermediate</td>
+                        <td>Grammar, expanded vocabulary, conversation, comprehension, practical scenarios</td>
+                        <td>Al-‘Arabiyyah Bayn Yadayk</td>
+                    </tr>
+                </tbody>
             </table>
             <h3 class="section-title"><i class="fa fa-laptop"></i> Online Teaching Methods</h3>
             <ul>
@@ -296,26 +369,30 @@
             <p>أقدم دروسًا احترافية في اللغة العربية لجميع المستويات (مبتدئ، متوسط، متقدم) باستخدام منهجية منظمة لكل مرحلة. أعتمد في تدريسي على أساليب حديثة وتقنيات متطورة لضمان تعلم فعال وتفاعلي عبر الإنترنت.</p>
             <h3>هيكل المنهج</h3>
             <table class="curriculum-table" dir="rtl">
-                <tr>
-                    <th>المستوى</th>
-                    <th>مجالات التركيز</th>
-                    <th>المواد/الكتب</th>
-                </tr>
-                <tr>
-                    <td>مبتدئ</td>
-                    <td>الحروف، النطق، المفردات الأساسية، الجمل البسيطة، أساسيات القراءة والكتابة</td>
-                    <td>نور البيان، اقرأ</td>
-                </tr>
-                <tr>
-                    <td>متوسط</td>
-                    <td>القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
-                    <td>العربية بين يديك</td>
-                </tr>
-                <tr>
-                    <td>متقدم</td>
-                    <td>القواعد المتقدمة، القراءة والكتابة المتقدمة، مناقشة قضايا المجتمع، نصوص كلاسيكية</td>
-                    <td>مواد مخصصة</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>المستوى</th>
+                        <th>مجالات التركيز</th>
+                        <th>المواد/الكتب</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>مبتدئ</td>
+                        <td>الحروف، النطق، المفردات الأساسية، الجمل البسيطة، أساسيات القراءة والكتابة</td>
+                        <td>نور البيان، اقرأ</td>
+                    </tr>
+                    <tr>
+                        <td>متوسط</td>
+                        <td>القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
+                        <td>العربية بين يديك</td>
+                    </tr>
+                    <tr>
+                        <td>متقدم</td>
+                        <td>القواعد المتقدمة، القراءة والكتابة المتقدمة، مناقشة قضايا المجتمع، نصوص كلاسيكية</td>
+                        <td>مواد مخصصة</td>
+                    </tr>
+                </tbody>
             </table>
             <h3 class="section-title"><i class="fa fa-laptop"></i> طرق التدريس عبر الإنترنت</h3>
             <ul>
