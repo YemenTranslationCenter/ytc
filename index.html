@@ -8,6 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        /* Box sizing reset for better layout control */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 
         body {
@@ -17,7 +22,10 @@
             font-family: 'Montserrat', Arial, sans-serif;
             color: #222;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll from body */
+            text-rendering: optimizeLegibility; /* Smoother font rendering */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .container {
             max-width: 1200px;
@@ -27,8 +35,8 @@
             box-shadow: 0 8px 32px rgba(44,62,80,0.12);
             padding: 40px 24px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
+            flex-wrap: wrap; /* Allows columns to wrap */
+            gap: 32px; /* Space between columns */
             animation: fadeIn 2.2s cubic-bezier(.4,0,.2,1);
         }
         @keyframes fadeIn {
@@ -36,13 +44,13 @@
             to { opacity: 1; transform: translateY(0);}
         }
         .col {
-            flex: 1 1 420px;
-            min-width: 320px;
+            flex: 1 1 420px; /* Allows flexibility and defines base width */
+            min-width: 320px; /* Ensures minimum width, adjust as needed */
             padding: 24px;
             border-radius: 16px;
             background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
             box-shadow: 0 2px 12px rgba(44,62,80,0.08);
-            margin-bottom: 20px;
+            margin-bottom: 0; /* Removed margin-bottom here, rely on gap */
             transition: box-shadow 0.3s;
         }
         .col:hover {
@@ -76,7 +84,7 @@
         .col[dir="rtl"] h2,
         .col[dir="rtl"] h3,
         .col[dir="rtl"] .section-title {
-            font-family: 'Droid', 'Cairo', serif; /* Amiri as primary, Cairo as fallback */
+            font-family: 'Droid Arabic Kufi', 'Cairo', serif; /* Amiri as primary, Cairo as fallback */
             font-weight: 700; /* Ensuring boldness */
         }
 
@@ -141,7 +149,7 @@
             border-spacing: 0;
             margin-bottom: 18px;
             font-size: 0.98em;
-            overflow: hidden;
+            overflow: hidden; /* Ensures border-radius is applied to children */
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-radius: 12px;
         }
@@ -182,7 +190,7 @@
 
         .curriculum-table[dir="rtl"] th,
         .curriculum-table[dir="rtl"] td {
-            text-align: right;
+            text-align: right; /* Ensure right alignment for RTL */
             font-family: 'Cairo', Arial, sans-serif;
         }
         .curriculum-table[dir="rtl"] th:first-child {
@@ -216,6 +224,8 @@
             transition: background 0.2s;
             display: inline-block;
             text-decoration: none;
+            text-align: center; /* Center text for block elements */
+            white-space: nowrap; /* Prevent button text from wrapping */
         }
         .cta:hover {
             background: linear-gradient(90deg, #3aafa9 0%, #0e6ba8 100%);
@@ -260,63 +270,171 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-        @media (max-width: 900px) {
-            .container { flex-direction: column; gap: 0;}
-            .col { min-width: unset; }
+
+        /* --- Light Vibration Animation Styles for h2 words --- */
+        .animated-h2 {
+            display: block; /* Changed to block so words can stack correctly if needed */
+            color: #4169E1; /* Royal Blue color applied here */
         }
+
+        .animated-h2 span {
+            display: inline-block; /* Essential for transform to work on individual words */
+            animation: lightVibrate 1.5s ease-in-out infinite; /* Shorter duration, smoother ease */
+            animation-delay: var(--delay);
+            margin-right: 0.25em; /* Small space between words */
+        }
+
+        /* Adjusted keyframes for a subtler vibration */
+        @keyframes lightVibrate {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-0.5px, 0.5px); }
+            20% { transform: translate(0.5px, -0.5px); }
+            30% { transform: translate(-0.5px, 0.5px); }
+            40% { transform: translate(0.5px, -0.5px); }
+            50% { transform: translate(0, 0); }
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .container { 
+                flex-direction: column; 
+                gap: 20px; /* Add some gap between stacked columns */
+                margin: 20px auto; /* Adjust margin for smaller screens */
+            }
+            .col { 
+                min-width: unset; /* Remove fixed min-width for columns */
+                padding: 20px; /* Slightly reduce padding */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .curriculum-table thead {
+                display: none; /* Hide table headers on small screens */
+            }
+            .curriculum-table, .curriculum-table tbody, .curriculum-table tr, .curriculum-table td {
+                display: block; /* Make table elements behave like blocks */
+                width: 100%;
+            }
+            .curriculum-table tr {
+                margin-bottom: 15px;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            }
+            .curriculum-table td {
+                text-align: right; /* Default to right for consistency, will be overridden by RTL */
+                border-bottom: 1px solid #f0f0f0; /* Lighter border between data cells */
+                position: relative;
+                padding-left: 50%; /* Make space for pseudo-element labels */
+            }
+            /* Specific RTL adjustments for table cells */
+            .curriculum-table[dir="rtl"] td {
+                text-align: right; /* Ensure content is right-aligned */
+                padding-right: 50%; /* Make space for pseudo-element labels on right */
+                padding-left: 15px; /* Adjust padding on left side */
+            }
+            .curriculum-table td::before {
+                content: attr(data-label); /* Use data-label for content */
+                position: absolute;
+                left: 0;
+                width: 45%; /* Label width */
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left; /* Align labels left for LTR */
+                color: #555;
+            }
+            .curriculum-table[dir="rtl"] td::before {
+                left: auto; /* Reset left */
+                right: 0; /* Position label to the right */
+                padding-left: 0; /* Remove left padding */
+                padding-right: 15px; /* Add right padding */
+                text-align: right; /* Align labels right for RTL */
+            }
+            .curriculum-table tbody tr:last-child td {
+                border-bottom: 1px solid #f0f0f0; /* Ensure last cell has border */
+            }
+            .curriculum-table tbody tr:last-child td:last-child {
+                border-bottom: none; /* Only the very last cell of the last row */
+            }
+        }
+
         @media (max-width: 600px) {
-            .container { padding: 12px;}
-            .col { padding: 12px;}
-            .whatsapp-float { width: 48px; height: 48px; font-size: 26px; bottom: 16px; right: 12px;}
+            .container { 
+                padding: 15px; /* Slightly more padding than 12px for better visuals */
+                margin: 15px auto;
+                border-radius: 16px; /* Slightly smaller border radius */
+            }
+            .col { 
+                padding: 15px; /* Consistent padding */
+                border-radius: 12px;
+            }
+            .whatsapp-float { 
+                width: 50px; 
+                height: 50px; 
+                font-size: 30px; 
+                bottom: 20px; 
+                right: 20px;
+            }
 
             /* --- Font size adjustments for mobile --- */
             h1 {
                 font-size: 2rem; /* Reduce h1 size for mobile */
+                letter-spacing: 0.5px;
             }
             h2 {
                 font-size: 1.3rem; /* Reduce h2 size for mobile */
+                letter-spacing: 0.2px;
             }
             h3, .section-title {
-                font-size: 1rem; /* Adjust h3 and section title size */
+                font-size: 1.05rem; /* Adjust h3 and section title size */
+                letter-spacing: 0.2px;
             }
             p, ul li, ol li, .services-list li, .contact-list li {
                 font-size: 0.95rem; /* Ensure body and list text is readable */
+                line-height: 1.5;
             }
             .curriculum-table th, .curriculum-table td {
-                font-size: 0.85em; /* Make table text slightly smaller */
-                padding: 8px 10px; /* Reduce table cell padding */
+                font-size: 0.9em; /* Make table text slightly smaller */
+                padding: 10px 12px; /* Adjust table cell padding */
             }
             .cta {
                 font-size: 1rem; /* Adjust CTA button text size */
                 padding: 10px 24px;
+                width: 100%; /* Make CTA button full width on small screens */
+                display: block; /* Make it a block element to take full width */
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .animated-h2 {
+                font-size: 1.2rem; /* Adjust size of animated text for readability */
+            }
+            .animated-h2 span {
+                margin-right: 0.2em; /* Slightly reduce space between words on smaller screens */
             }
         }
 
-        /* --- Waving Words Animation Styles --- */
-        .animated-h2 {
-            display: inline-flex; 
-            flex-wrap: wrap;
-            gap: 0; /* Changed back to 0 for no space between words */
+        @media (max-width: 480px) {
+            /* Even smaller adjustments for very narrow screens */
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.2rem; }
+            h3, .section-title { font-size: 1rem; }
+            p, ul li, ol li, .services-list li, .contact-list li { font-size: 0.9rem; }
+            .whatsapp-float { width: 45px; height: 45px; font-size: 28px; bottom: 15px; right: 15px;}
+            
+            .curriculum-table td::before {
+                width: 40%; /* Adjust label width for very small screens */
+                font-size: 0.85em;
+            }
+            .curriculum-table td {
+                padding-left: 45%; /* Adjust padding for label */
+            }
+            .curriculum-table[dir="rtl"] td {
+                padding-right: 45%; /* Adjust padding for label in RTL */
+            }
         }
 
-        .animated-h2 span {
-            display: inline-block;
-            animation: wave 9s ease-in-out infinite; 
-            animation-delay: var(--delay);
-            color: #4169E1; /* Royal Blue color applied here */
-        }
-
-        @keyframes wave {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            25% {
-                transform: translateY(-5px);
-            }
-            75% {
-                transform: translateY(5px);
-            }
-        }
     </style>
 </head>
 <body>
@@ -346,19 +464,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Beginner</td>
-                        <td>Alphabet, pronunciation, basic vocabulary, simple sentences, reading & writing fundamentals</td>
-                        <td>Noor Al-Bayaan, Iqraa’</td>
+                        <td data-label="Level">Beginner</td>
+                        <td data-label="Focus Areas">Alphabet, pronunciation, basic vocabulary, simple sentences, reading & writing fundamentals</td>
+                        <td data-label="Materials/Texts">Noor Al-Bayaan, Iqraa’</td>
                     </tr>
                     <tr>
-                        <td>Intermediate</td>
-                        <td>Grammar, expanded vocabulary, conversation, comprehension, practical scenarios</td>
-                        <td>Al-‘Arabiyyah Bayn Yadayk</td>
+                        <td data-label="Level">Intermediate</td>
+                        <td data-label="Focus Areas">Grammar, expanded vocabulary, conversation, comprehension, practical scenarios</td>
+                        <td data-label="Materials/Texts">Al-‘Arabiyyah Bayn Yadayk</td>
                     </tr>
                     <tr>
-                        <td>Advanced</td>
-                        <td>Complex grammar, advanced reading, writing, societal topics, classical texts</td>
-                        <td>Custom materials</td>
+                        <td data-label="Level">Advanced</td>
+                        <td data-label="Focus Areas">Complex grammar, advanced reading, writing, societal topics, classical texts</td>
+                        <td data-label="Materials/Texts">Custom materials</td>
                     </tr>
                 </tbody>
             </table>
@@ -422,19 +540,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>مبتدئ</td>
-                        <td>الحروف، النطق، المفردات الأساسية، الجمل البسيطة، أساسيات القراءة والكتابة</td>
-                        <td>نور البيان، اقرأ</td>
+                        <td data-label="المستوى">مبتدئ</td>
+                        <td data-label="مجالات التركيز">الحروف، النطق، المفردات الأساسية، الجمل البسيطة، أساسيات القراءة والكتابة</td>
+                        <td data-label="المواد/الكتب">نور البيان، اقرأ</td>
                     </tr>
                     <tr>
-                        <td>متوسط</td>
-                        <td>القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
-                        <td>العربية بين يديك</td>
+                        <td data-label="المستوى">متوسط</td>
+                        <td data-label="مجالات التركيز">القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
+                        <td data-label="المواد/الكتب">العربية بين يديك</td>
                     </tr>
                     <tr>
-                        <td>متقدم</td>
-                        <td>قواعد متقدمة، قراءة وكتابة متقدمة، مواضيع مجتمعية، نصوص كلاسيكية</td>
-                        <td>مواد مخصصة</td>
+                        <td data-label="المستوى">متقدم</td>
+                        <td data-label="مجالات التركيز">قواعد متقدمة، قراءة وكتابة متقدمة، مواضيع مجتمعية، نصوص كلاسيكية</td>
+                        <td data-label="المواد/الكتب">مواد مخصصة</td>
                     </tr>
                 </tbody>
             </table>
@@ -493,8 +611,9 @@
                     const span = document.createElement('span');
                     span.textContent = word; // Place the entire word in the span
 
-                    // Calculate delay for each word to create the wave effect
-                    const delay = (h2Index * 0.5) + (wordIndex * 0.15); 
+                    // Calculate delay for each word to create the animation effect
+                    // Adjust this for desired timing of the vibration
+                    const delay = (h2Index * 0.2) + (wordIndex * 0.08); // Reduced overall delay for faster vibration cascade
                     span.style.setProperty('--delay', `${delay}s`);
                     h2Element.appendChild(span);
                 });
