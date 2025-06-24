@@ -268,18 +268,40 @@
             .container { padding: 12px;}
             .col { padding: 12px;}
             .whatsapp-float { width: 48px; height: 48px; font-size: 26px; bottom: 16px; right: 12px;}
+
+            /* --- Font size adjustments for mobile --- */
+            h1 {
+                font-size: 2rem; /* Reduce h1 size for mobile */
+            }
+            h2 {
+                font-size: 1.3rem; /* Reduce h2 size for mobile */
+            }
+            h3, .section-title {
+                font-size: 1rem; /* Adjust h3 and section title size */
+            }
+            p, ul li, ol li, .services-list li, .contact-list li {
+                font-size: 0.95rem; /* Ensure body and list text is readable */
+            }
+            .curriculum-table th, .curriculum-table td {
+                font-size: 0.85em; /* Make table text slightly smaller */
+                padding: 8px 10px; /* Reduce table cell padding */
+            }
+            .cta {
+                font-size: 1rem; /* Adjust CTA button text size */
+                padding: 10px 24px;
+            }
         }
 
         /* --- Waving Words Animation Styles --- */
         .animated-h2 {
             display: inline-flex; 
             flex-wrap: wrap;
-            gap: 0.4em; /* Change to 0 for no space between words */
+            gap: 0.4em; /* Changed back to 0 for no space between words */
         }
 
         .animated-h2 span {
             display: inline-block;
-            animation: wave 9s ease-in-out infinite; /* Speed decreased by 50% (duration is doubled) */
+            animation: wave 9s ease-in-out infinite; 
             animation-delay: var(--delay);
             color: #4169E1; /* Royal Blue color applied here */
         }
@@ -408,6 +430,11 @@
                         <td>متوسط</td>
                         <td>القواعد، إثراء المفردات، المحادثة، الفهم، مواقف عملية</td>
                         <td>العربية بين يديك</td>
+                    </tr>
+                    <tr>
+                        <td>متقدم</td>
+                        <td>قواعد متقدمة، قراءة وكتابة متقدمة، مواضيع مجتمعية، نصوص كلاسيكية</td>
+                        <td>مواد مخصصة</td>
                     </tr>
                 </tbody>
             </table>
