@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    /*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> */
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
 
     <style>
@@ -142,6 +141,64 @@
         .section-title i {
             color: #28a745; /* Green color for new section title icons */
         }
+
+        /* --- Quran Section Wrapper Styling --- */
+        .quran-section-wrapper {
+            border: 3px solid #FFD700; /* Golden color border */
+            border-radius: 18px; /* Slightly more rounded corners */
+            padding: 20px; /* Add padding inside the border */
+            margin-top: 20px; /* Space from previous content */
+            margin-bottom: 20px; /* Space before next content */
+            /* Removed background and box-shadow */
+            position: relative; /* Needed for pseudo-elements */
+            overflow: hidden; /* Ensures decorations stay within border */
+        }
+        .quran-section-wrapper::before,
+        .quran-section-wrapper::after {
+            content: '';
+            position: absolute;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.4) 0%, transparent 70%); /* Subtle radial gradient for "decoration" */
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.15; /* Reduced opacity */
+        }
+        .quran-section-wrapper::before {
+            top: -20px;
+            left: -20px;
+        }
+        .quran-section-wrapper::after {
+            bottom: -20px;
+            right: -20px;
+        }
+
+        /* Styling for the animated crescent (now moon phases effect) */
+        .animated-crescent {
+            font-size: 1.5em; /* Bigger size */
+            margin-left: 10px; /* Space from text */
+            display: inline-block; /* Essential for animation */
+            animation: moonColorChange 5s infinite linear, moonOrbit 10s infinite linear; /* Combined animations */
+        }
+
+        /* Animation for color change */
+        @keyframes moonColorChange {
+            0%   { color: #FFD700; } /* Golden */
+            25%  { color: #DAA520; } /* Goldenrod */
+            50%  { color: #B8860B; } /* DarkGoldenrod */
+            75%  { color: #FFD700; } /* Golden */
+            100% { color: #DAA520; } /* Goldenrod */
+        }
+
+        /* Animation for circling effect */
+        @keyframes moonOrbit {
+            0%   { transform: rotate(0deg) translateX(0) translateY(0); }
+            25%  { transform: rotate(90deg) translateX(5px) translateY(0); } /* Slight movement */
+            50%  { transform: rotate(180deg) translateX(0) translateY(5px); }
+            75%  { transform: rotate(270deg) translateX(-5px) translateY(0); }
+            100% { transform: rotate(360deg) translateX(0) translateY(0); }
+        }
+
         /* --- Curriculum Table High-End Styling --- */
         .curriculum-table {
             width: 100%;
@@ -304,6 +361,9 @@
                  min-width: unset; /* Remove fixed min-width for columns */
                 padding: 20px; /* Slightly reduce padding */
             }
+            .quran-section-wrapper {
+                padding: 15px; /* Adjust padding for mobile */
+            }
         }
         @media (max-width: 768px) {
             .curriculum-table thead {
@@ -447,14 +507,6 @@
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> Arabic Language Tutoring</h2>
             <p>I offer professional Arabic language tutoring for all levels—beginner, intermediate, and advanced—using a structured curriculum tailored to each stage. My approach combines proven teaching methodologies with modern technology for effective, engaging, and interactive online learning.</p>
 
-            <h3 class="section-title"><i class="fa fa-quran"></i> Quran Recitation Tutoring</h3>
-            <ul>
-                <li><b>Talqeen (Instruction):</b> Learning proper pronunciation and articulation.</li>
-                <li><b>Tajweed (Correct Pronunciation):</b> Mastering the rules of Quranic recitation.</li>
-                <li><b>Tahfeez (Memorization):</b> Techniques and guidance for memorizing the Quran.</li>
-                <li><b>Tasmee' (Recitation Review):</b> Review and correction of memorized verses.</li>
-            </ul>
-
             <h3 class="section-title"><i class="fa fa-book"></i> Curriculum Structure</h3>
             <table class="curriculum-table">
                 <thead>
@@ -507,6 +559,17 @@
                 <li>Professionals working with Arabic-speaking clients</li>
                 <li>Travelers, expatriates, or anyone interested in Arabic language and culture</li>
             </ul>
+
+            <div class="quran-section-wrapper">
+                <h3 class="section-title"><i class="fa fa-book"></i> Quran Recitation Tutoring <span class="animated-crescent fa fa-star"></span></h3>
+                <ul>
+                    <li><b>Talqeen (Instruction):</b> Learning proper pronunciation and articulation.</li>
+                    <li><b>Tajweed (Correct Pronunciation):</b> Mastering the rules of Quranic recitation.</li>
+                    <li><b>Tahfeez (Memorization):</b> Techniques and guidance for memorizing the Quran.</li>
+                    <li><b>Tasmee' (Recitation Review):</b> Review and correction of memorized verses.</li>
+                </ul>
+            </div>
+
             <h2 style="margin-top:32px;">Contact</h2>
             <ul class="contact-list">
                 <li><i class="fa fa-phone"></i> +20 1555-608-636</li>
@@ -515,7 +578,7 @@
                 <li><i class="fa fa-skype"></i> shandalan</li>
                 <li><i class="fa fa-paypal"></i> al_muafa@yahoo.com</li>
             </ul>
-            <a href="https://wa.me/967775900315" class="cta" target="_blank"><i class="fa fa-whatsapp"></i> Message on WhatsApp</a>
+            <a href="https://wa.me/967775900315" class="cta" target="_blank"><i class="fa fa-whatsapp"></i> Click to WhatsApp</a>
         </div>
         <div class="col" dir="rtl" lang="ar">
             <h1><i class="fa fa-language"></i> المركز اليمني للترجمة</h1>
@@ -531,14 +594,6 @@
             <div class="section-title">متوفرون على مدار الساعة</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> دروس اللغة العربية</h2>
             <p>أقدم دروسًا احترافية في اللغة العربية لجميع المستويات (مبتدئ، متوسط، متقدم) باستخدام منهجية منظمة لكل مرحلة. أعتمد في تدريسي على أساليب حديثة وتقنيات متطورة لضمان تعلم فعال وتفاعلي عبر الإنترنت.</p>
-
-            <h3 class="section-title"><i class="fa fa-quran"></i> دروس تلاوة القرآن</h3>
-            <ul>
-                <li><b>تلقين:</b> تعلم النطق الصحيح ومخارج الحروف.</li>
-                <li><b>تجويد:</b> إتقان قواعد تلاوة القرآن الكريم.</li>
-                <li><b>تحفيظ:</b> طرق وإرشادات لحفظ القرآن الكريم.</li>
-                <li><b>تسميع:</b> مراجعة وتصحيح الآيات المحفوظة.</li>
-            </ul>
 
             <h3 class="section-title"><i class="fa fa-book"></i> هيكل المنهج</h3>
             <table class="curriculum-table" dir="rtl">
@@ -592,6 +647,17 @@
                 <li>المحترفون المتعاملون مع عملاء أو شركاء ناطقين بالعربية</li>
                 <li>المسافرون أو المهتمون باللغة والثقافة العربية</li>
             </ul>
+
+            <div class="quran-section-wrapper">
+                <h3 class="section-title"><i class="fa fa-book"></i> دروس تلاوة القرآن <span class="animated-crescent fa fa-star"></span></h3>
+                <ul>
+                    <li><b>تلقين:</b> تعلم النطق الصحيح ومخارج الحروف.</li>
+                    <li><b>تجويد:</b> إتقان قواعد تلاوة القرآن الكريم.</li>
+                    <li><b>تحفيظ:</b> طرق وإرشادات لحفظ القرآن الكريم.</li>
+                    <li><b>تسميع:</b> مراجعة وتصحيح الآيات المحفوظة.</li>
+                </ul>
+            </div>
+
             <h2 style="margin-top:32px;">للتواصل</h2>
             <ul class="contact-list">
                 <li><i class="fa fa-phone"></i> <span dir="ltr" style="unicode-bidi: isolate;">+20 1555-608-636</span></li>
