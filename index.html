@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    /*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> */
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
+
     <style>
         /* Box sizing reset for better layout control */
         *, *::before, *::after {
@@ -14,7 +17,6 @@
         }
 
         @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
-
         body {
             margin: 0;
             padding: 0;
@@ -93,7 +95,6 @@
             font-family: 'Droid Arabic Kufi', sans-serif; /* Droid Arabic Kufi for the main title */
             font-weight: 700; /* Ensuring boldness */
         }
-
         h2 {
             font-size: 1.5rem;
             margin-bottom: 12px;
@@ -141,7 +142,6 @@
         .section-title i {
             color: #28a745; /* Green color for new section title icons */
         }
-        
         /* --- Curriculum Table High-End Styling --- */
         .curriculum-table {
             width: 100%;
@@ -270,7 +270,6 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-
         /* --- Light Vibration Animation Styles for h2 words --- */
         .animated-h2 {
             display: block; /* Changed to block so words can stack correctly if needed */
@@ -294,20 +293,18 @@
             50% { transform: translate(0, 0); }
         }
 
-
         /* Responsive adjustments */
         @media (max-width: 900px) {
-            .container { 
-                flex-direction: column; 
-                gap: 20px; /* Add some gap between stacked columns */
+            .container {
+                 flex-direction: column;
+                 gap: 20px; /* Add some gap between stacked columns */
                 margin: 20px auto; /* Adjust margin for smaller screens */
             }
-            .col { 
-                min-width: unset; /* Remove fixed min-width for columns */
+            .col {
+                 min-width: unset; /* Remove fixed min-width for columns */
                 padding: 20px; /* Slightly reduce padding */
             }
         }
-
         @media (max-width: 768px) {
             .curriculum-table thead {
                 display: none; /* Hide table headers on small screens */
@@ -359,23 +356,22 @@
                 border-bottom: none; /* Only the very last cell of the last row */
             }
         }
-
         @media (max-width: 600px) {
-            .container { 
-                padding: 15px; /* Slightly more padding than 12px for better visuals */
+            .container {
+                 padding: 15px; /* Slightly more padding than 12px for better visuals */
                 margin: 15px auto;
                 border-radius: 16px; /* Slightly smaller border radius */
             }
-            .col { 
-                padding: 15px; /* Consistent padding */
+            .col {
+                 padding: 15px; /* Consistent padding */
                 border-radius: 12px;
             }
-            .whatsapp-float { 
-                width: 50px; 
-                height: 50px; 
-                font-size: 30px; 
-                bottom: 20px; 
-                right: 20px;
+            .whatsapp-float {
+                 width: 50px;
+                 height: 50px;
+                 font-size: 30px;
+                 bottom: 20px;
+                 right: 20px;
             }
 
             /* --- Font size adjustments for mobile --- */
@@ -414,7 +410,6 @@
                 margin-right: 0.2em; /* Slightly reduce space between words on smaller screens */
             }
         }
-
         @media (max-width: 480px) {
             /* Even smaller adjustments for very narrow screens */
             h1 { font-size: 1.8rem; }
@@ -422,7 +417,6 @@
             h3, .section-title { font-size: 1rem; }
             p, ul li, ol li, .services-list li, .contact-list li { font-size: 0.9rem; }
             .whatsapp-float { width: 45px; height: 45px; font-size: 28px; bottom: 15px; right: 15px;}
-            
             .curriculum-table td::before {
                 width: 40%; /* Adjust label width for very small screens */
                 font-size: 0.85em;
@@ -434,7 +428,6 @@
                 padding-right: 45%; /* Adjust padding for label in RTL */
             }
         }
-
     </style>
 </head>
 <body>
@@ -453,6 +446,15 @@
             <div class="section-title">Available 24/7</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> Arabic Language Tutoring</h2>
             <p>I offer professional Arabic language tutoring for all levels—beginner, intermediate, and advanced—using a structured curriculum tailored to each stage. My approach combines proven teaching methodologies with modern technology for effective, engaging, and interactive online learning.</p>
+
+            <h3 class="section-title"><i class="fa fa-quran"></i> Quran Recitation Tutoring</h3>
+            <ul>
+                <li><b>Talqeen (Instruction):</b> Learning proper pronunciation and articulation.</li>
+                <li><b>Tajweed (Correct Pronunciation):</b> Mastering the rules of Quranic recitation.</li>
+                <li><b>Tahfeez (Memorization):</b> Techniques and guidance for memorizing the Quran.</li>
+                <li><b>Tasmee' (Recitation Review):</b> Review and correction of memorized verses.</li>
+            </ul>
+
             <h3 class="section-title"><i class="fa fa-book"></i> Curriculum Structure</h3>
             <table class="curriculum-table">
                 <thead>
@@ -529,6 +531,15 @@
             <div class="section-title">متوفرون على مدار الساعة</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> دروس اللغة العربية</h2>
             <p>أقدم دروسًا احترافية في اللغة العربية لجميع المستويات (مبتدئ، متوسط، متقدم) باستخدام منهجية منظمة لكل مرحلة. أعتمد في تدريسي على أساليب حديثة وتقنيات متطورة لضمان تعلم فعال وتفاعلي عبر الإنترنت.</p>
+
+            <h3 class="section-title"><i class="fa fa-quran"></i> دروس تلاوة القرآن</h3>
+            <ul>
+                <li><b>تلقين:</b> تعلم النطق الصحيح ومخارج الحروف.</li>
+                <li><b>تجويد:</b> إتقان قواعد تلاوة القرآن الكريم.</li>
+                <li><b>تحفيظ:</b> طرق وإرشادات لحفظ القرآن الكريم.</li>
+                <li><b>تسميع:</b> مراجعة وتصحيح الآيات المحفوظة.</li>
+            </ul>
+
             <h3 class="section-title"><i class="fa fa-book"></i> هيكل المنهج</h3>
             <table class="curriculum-table" dir="rtl">
                 <thead>
@@ -603,14 +614,12 @@
             animatedH2s.forEach((h2Element, h2Index) => {
                 const text = h2Element.dataset.text;
                 h2Element.innerHTML = ''; // Clear existing content
-
                 // Split text into words (handle multiple spaces)
                 const words = text.split(/\s+/).filter(word => word.length > 0);
 
                 words.forEach((word, wordIndex) => {
                     const span = document.createElement('span');
                     span.textContent = word; // Place the entire word in the span
-
                     // Calculate delay for each word to create the animation effect
                     // Adjust this for desired timing of the vibration
                     const delay = (h2Index * 0.2) + (wordIndex * 0.08); // Reduced overall delay for faster vibration cascade
