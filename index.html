@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
+
 
     <style>
         /* Box sizing reset for better layout control */
@@ -59,7 +61,7 @@
         }
         .col[dir="rtl"] {
             font-family: 'Cairo', Arial, sans-serif;
-            background: linear-gradient(120deg, #d3f9dc 0%, #d3f9dc 100%);
+            background: linear-gradient(120deg, #d3f9dc 0%, #d3f9dc  100%);
         }
 
         h1, h2, h3 {
@@ -350,15 +352,32 @@
             50% { transform: translate(0, 0); }
         }
 
+        /* --- Visitor Counter Specific Styles (inline with content) --- */
+        .visitor-count {
+            display: block; /* Makes it take full width and center text */
+            text-align: center;
+            margin-top: 15px; /* Space above the counter */
+            font-size: 0.8rem; /* Set font size to be quarter of original (2.5rem / 4 = 0.625rem, adjusted slightly for readability) */
+            font-weight: 700;
+            color: #ffd700; /* A distinct color for the count */
+            padding: 5px 0; /* Minimal padding */
+            background-color: rgba(0, 0, 0, 0.0); /* Very subtle background */
+            border-radius: 5px;
+            margin-left: auto; /* For centering */
+            margin-right: auto; /* For centering */
+            width: fit-content; /* Ensure background only covers text */
+        }
+
+
         /* Responsive adjustments */
         @media (max-width: 900px) {
             .container {
-                 flex-direction: column;
-                 gap: 20px; /* Add some gap between stacked columns */
+                flex-direction: column;
+                gap: 20px; /* Add some gap between stacked columns */
                 margin: 20px auto; /* Adjust margin for smaller screens */
             }
             .col {
-                 min-width: unset; /* Remove fixed min-width for columns */
+                min-width: unset; /* Remove fixed min-width for columns */
                 padding: 20px; /* Slightly reduce padding */
             }
             .quran-section-wrapper {
@@ -418,20 +437,20 @@
         }
         @media (max-width: 600px) {
             .container {
-                 padding: 15px; /* Slightly more padding than 12px for better visuals */
+                padding: 15px; /* Slightly more padding than 12px for better visuals */
                 margin: 15px auto;
                 border-radius: 16px; /* Slightly smaller border radius */
             }
             .col {
-                 padding: 15px; /* Consistent padding */
+                padding: 15px; /* Consistent padding */
                 border-radius: 12px;
             }
             .whatsapp-float {
-                 width: 50px;
-                 height: 50px;
-                 font-size: 30px;
-                 bottom: 20px;
-                 right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
+                bottom: 20px;
+                right: 20px;
             }
 
             /* --- Font size adjustments for mobile --- */
@@ -468,6 +487,11 @@
             }
             .animated-h2 span {
                 margin-right: 0.2em; /* Slightly reduce space between words on smaller screens */
+            }
+
+            /* Visitor Counter Mobile Adjustments */
+            .visitor-count {
+                font-size: 0.7rem; /* Adjust for mobile to be readable */
             }
         }
         @media (max-width: 480px) {
@@ -667,12 +691,14 @@
                 <li><i class="fa fa-paypal"></i> al_muafa@yahoo.com</li>
             </ul>
             
+            <div class="visitor-count" id="count">0</div>
+
         </div>
     </div>
     <a href="https://wa.me/967775900315" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
         <i class="fa fa-whatsapp"></i>
     </a>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const animatedH2s = document.querySelectorAll('.animated-h2');
@@ -693,6 +719,36 @@
                     h2Element.appendChild(span);
                 });
             });
+
+            // Visitor counter functionality
+            function updateCounter() {
+                let count = localStorage.getItem('visitorCount');
+                
+                if (count === null) {
+                    count = 1;
+                } else {
+                    count = parseInt(count) + 1;
+                }
+                
+                localStorage.setItem('visitorCount', count);
+                
+                // Animate the counter
+                const counterElement = document.getElementById('count');
+                let currentCount = parseInt(counterElement.textContent);
+                const increment = Math.ceil(count / 30); // Adjust for desired animation speed
+                
+                const interval = setInterval(() => {
+                    currentCount += increment;
+                    if (currentCount >= count) {
+                        clearInterval(interval);
+                        currentCount = count;
+                    }
+                    counterElement.textContent = currentCount.toLocaleString();
+                }, 30); // Animation speed in milliseconds
+            }
+
+            // Initialize visitor counter on page load
+            updateCounter();
         });
     </script>
 </body>
