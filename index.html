@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
 
-    <style>
-        @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css); /* Moved to the top */
 
+    <style>
         /* Box sizing reset for better layout control */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
+        @import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
         body {
             margin: 0;
             padding: 0;
@@ -28,11 +29,17 @@
             text-rendering: optimizeLegibility; /* Smoother font rendering */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-		}
+        }
         .container {
-            /* Removed max-width, margin, background, border-radius, box-shadow, padding */
-            /* This effectively makes the container stretch to 100% width and removes its styling */
+            max-width: 1200px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.12);
+            padding: 40px 24px;
             display: flex;
+            flex-wrap: wrap; /* Allows columns to wrap */
+            gap: 32px; /* Space between columns */
             animation: fadeIn 2.2s cubic-bezier(.4,0,.2,1);
         }
         @keyframes fadeIn {
@@ -40,69 +47,16 @@
             to { opacity: 1; transform: translateY(0);}
         }
         .col {
-			width: 50%; /* Make each column take 50% width */
-			padding: 24px;
-			/* Removed margin-bottom: 40px; */ /* Save vertical space */
-			border-radius: 16px;
-			background: linear-gradient(120deg, #f6f1d4 0%, #f6f1d4 100%);
-			box-shadow: none;
-            float: left; /* Float columns for side-by-side layout */
-		}
-		@media print {
-			body {
-			background: #fff;
-            font-size: 10pt; /* Smaller base font size for print */
-			}
-			.col {
-				page-break-inside: avoid;
-				box-shadow: none;
-				border: none;
-				background: none;
-                width: 50%; /* Ensure 50% width for print */
-                float: left; /* Ensure side-by-side layout in print */
-                margin-bottom: 0; /* No margin at the bottom */
-                padding: 10px; /* Reduced padding for print */
-			}
-			@page {
-				size: A4 portrait;
-				margin: 1cm;
-			}
-			.whatsapp-float {
-				display: none !important;
-			}
-            h1 { font-size: 1.5rem; margin-bottom: 5px; } /* Smaller h1 for print */
-            h2 { font-size: 1.2rem; margin-bottom: 8px; } /* Smaller h2 for print */
-            h3 { font-size: 1rem; margin-bottom: 5px; } /* Smaller h3 for print */
-            p, ul li, ol li, .services-list li, .contact-list li, .curriculum-table th, .curriculum-table td {
-                font-size: 0.85rem; /* Smaller text for print */
-                line-height: 1.4;
-                margin-bottom: 5px; /* Reduced margin for lists and paragraphs */
-            }
-            .section-title {
-                font-size: 0.95rem; /* Smaller section title for print */
-                margin-top: 10px;
-                margin-bottom: 5px;
-            }
-            .curriculum-table {
-                margin-bottom: 10px;
-            }
-            .curriculum-table th, .curriculum-table td {
-                padding: 8px 10px; /* Reduced table padding for print */
-            }
-            .cta {
-                padding: 8px 24px;
-                font-size: 0.9rem;
-            }
-            .quran-section-wrapper {
-                padding: 10px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-            }
-            .visitor-count { /* Hide visitor count in print */
-                display: none;
-            }
-		}
-		.col:hover {
+            flex: 1 1 420px; /* Allows flexibility and defines base width */
+            min-width: 320px; /* Ensures minimum width, adjust as needed */
+            padding: 24px;
+            border-radius: 16px;
+            background: linear-gradient(120deg, #f6f1d4 0%, #f6f1d4 100%);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+            margin-bottom: 0; /* Removed margin-bottom here, rely on gap */
+            transition: box-shadow 0.3s;
+        }
+        .col:hover {
             box-shadow: 0 8px 32px rgba(44,62,80,0.18);
         }
         .col[dir="rtl"] {
@@ -158,76 +112,23 @@
             padding-left: 20px;
             margin: 0 0 18px 0;
         }
-        /* New styles for button-like service items */
-        .services-list {
+        .services-list, .contact-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 15px 0; /* Reduced margin */
+            margin: 0 0 18px 0;
+        }
+        .services-list li, .contact-list li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
             display: flex;
-            flex-wrap: wrap; /* Allow wrapping onto multiple lines */
-            gap: 8px; /* Small gap between buttons */
-            justify-content: flex-start; /* Align items to the start */
-        }
-        .services-list li {
-            display: inline-flex; /* Use inline-flex for better vertical alignment with icon */
             align-items: center;
-            gap: 6px; /* Reduced gap between icon and text */
-            background-color: #0e6ba8; /* Button background */
-            color: #fff; /* Text color */
-            border-radius: 20px; /* More rounded corners */
-            padding: 8px 15px; /* Smaller padding */
-            font-size: 0.95rem; /* Slightly smaller font */
-            font-weight: 600;
-            white-space: nowrap; /* Prevent text wrapping within button */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, transform 0.2s;
-            margin-bottom: 0; /* No bottom margin on list items as gap handles spacing */
+            gap: 10px;
         }
-        .services-list li:hover {
-            background-color: #3aafa9; /* Hover effect */
-            transform: translateY(-2px);
+        .services-list i, .contact-list i {
+            color: #3498db; /* Blue color for icons */
+            min-width: 22px;
+            font-size: 1.2em;
         }
-        .services-list i {
-            color: #fff; /* Icons should be white */
-            min-width: unset; /* Remove fixed min-width */
-            font-size: 1em; /* Adjust icon size relative to text */
-        }
-
-        /* New styles for button-like contact items */
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 15px 0; /* Reduced margin */
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping onto multiple lines */
-            gap: 8px; /* Small gap between buttons */
-            justify-content: flex-start; /* Align items to the start */
-        }
-        .contact-list li {
-            display: inline-flex; /* Use inline-flex for better vertical alignment with icon */
-            align-items: center;
-            gap: 6px; /* Reduced gap between icon and text */
-            background-color: #3498db; /* Button background (blue) */
-            color: #fff; /* Text color */
-            border-radius: 20px; /* More rounded corners */
-            padding: 8px 15px; /* Smaller padding */
-            font-size: 0.95rem; /* Slightly smaller font */
-            font-weight: 600;
-            white-space: nowrap; /* Prevent text wrapping within button */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, transform 0.2s;
-            margin-bottom: 0; /* No bottom margin on list items as gap handles spacing */
-        }
-        .contact-list li:hover {
-            background-color: #2980b9; /* Darker blue on hover */
-            transform: translateY(-2px);
-        }
-        .contact-list i {
-            color: #fff; /* Icons should be white */
-            min-width: unset; /* Remove fixed min-width */
-            font-size: 1em; /* Adjust icon size relative to text */
-        }
-
         .section-title {
             margin-top: 16px;
             margin-bottom: 8px;
@@ -239,28 +140,6 @@
             align-items: center;
             gap: 10px;
         }
-        .section-title.button-like {
-            display: inline-flex; /* Make it behave like a button */
-            background-color: #28a745; /* Green background */
-            color: #fff;
-            border-radius: 20px;
-            padding: 8px 15px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-top: 10px; /* Adjust margin */
-            margin-bottom: 15px; /* Adjust margin */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, transform 0.2s;
-        }
-        .section-title.button-like:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-        }
-        .section-title.button-like i {
-            color: #fff; /* Icon color */
-        }
-
-        /* Original section title style, might need adjustment if .section-title is used elsewhere */
         .section-title i {
             color: #28a745; /* Green color for new section title icons */
         }
@@ -412,7 +291,6 @@
         }
         /* --- WhatsApp Floating Button Styles --- */
         .whatsapp-float {
-            display: none; /* Hide WhatsApp button by default */
             position: fixed;
             width: 60px;
             height: 60px;
@@ -425,6 +303,7 @@
             font-size: 38px;
             box-shadow: 2px 2px 8px #999;
             z-index: 999;
+            display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
@@ -475,7 +354,6 @@
 
         /* --- Visitor Counter Specific Styles (inline with content) --- */
         .visitor-count {
-            display: none; /* Hide visitor counter by default */
             display: block; /* Makes it take full width and center text */
             text-align: center;
             margin-top: 15px; /* Space above the counter */
@@ -501,14 +379,9 @@
             .col {
                 min-width: unset; /* Remove fixed min-width for columns */
                 padding: 20px; /* Slightly reduce padding */
-                width: 100%; /* Full width on smaller screens */
-                float: none; /* Remove float for stacking */
             }
             .quran-section-wrapper {
                 padding: 15px; /* Adjust padding for mobile */
-            }
-            .services-list, .contact-list {
-                justify-content: center; /* Center buttons on smaller screens */
             }
         }
         @media (max-width: 768px) {
@@ -589,18 +462,13 @@
                 font-size: 1.3rem; /* Reduce h2 size for mobile */
                 letter-spacing: 0.2px;
             }
-            h3 {
+            h3, .section-title {
                 font-size: 1.05rem; /* Adjust h3 and section title size */
                 letter-spacing: 0.2px;
             }
-            p, ul li, ol li {
+            p, ul li, ol li, .services-list li, .contact-list li {
                 font-size: 0.95rem; /* Ensure body and list text is readable */
                 line-height: 1.5;
-            }
-            .services-list li, .contact-list li, .section-title.button-like {
-                font-size: 0.85rem; /* Even smaller font for buttons on small screens */
-                padding: 6px 12px; /* Adjusted padding */
-                gap: 4px;
             }
             .curriculum-table th, .curriculum-table td {
                 font-size: 0.9em; /* Make table text slightly smaller */
@@ -630,8 +498,8 @@
             /* Even smaller adjustments for very narrow screens */
             h1 { font-size: 1.8rem; }
             h2 { font-size: 1.2rem; }
-            h3 { font-size: 1rem; }
-            p, ul li, ol li { font-size: 0.9rem; }
+            h3, .section-title { font-size: 1rem; }
+            p, ul li, ol li, .services-list li, .contact-list li { font-size: 0.9rem; }
             .whatsapp-float { width: 45px; height: 45px; font-size: 28px; bottom: 15px; right: 15px;}
             .curriculum-table td::before {
                 width: 40%; /* Adjust label width for very small screens */
@@ -642,10 +510,6 @@
             }
             .curriculum-table[dir="rtl"] td {
                 padding-right: 45%; /* Adjust padding for label in RTL */
-            }
-            .services-list li, .contact-list li, .section-title.button-like {
-                font-size: 0.8rem; /* Smallest font for buttons on very small screens */
-                padding: 5px 10px; /* Minimal padding */
             }
         }
     </style>
@@ -663,7 +527,7 @@
                 <li><i class="fa fa-pencil"></i> Content Creation</li>
                 <li><i class="fa fa-database"></i> Data Entry</li>
             </ul>
-            <div class="section-title button-like">Available 24/7</div>
+            <div class="section-title">Available 24/7</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> Arabic Language Tutoring</h2>
             <p>I offer professional Arabic language tutoring for all levels—beginner, intermediate, and advanced—using a structured curriculum tailored to each stage. My approach combines proven teaching methodologies with modern technology for effective, engaging, and interactive online learning.</p>
 
@@ -751,7 +615,7 @@
                 <li><i class="fa fa-pencil"></i> صناعة المحتوى</li>
                 <li><i class="fa fa-database"></i> إدخال البيانات</li>
             </ul>
-            <div class="section-title button-like">متوفرون على مدار الساعة</div>
+            <div class="section-title">متوفرون على مدار الساعة</div>
             <h2 style="margin-top:32px;"><i class="fa fa-graduation-cap"></i> دروس اللغة العربية</h2>
             <p>أقدم دروسًا احترافية في اللغة العربية لجميع المستويات (مبتدئ، متوسط، متقدم) باستخدام منهجية منظمة لكل مرحلة. أعتمد في تدريسي على أساليب حديثة وتقنيات متطورة لضمان تعلم فعال وتفاعلي عبر الإنترنت.</p>
 
@@ -807,6 +671,7 @@
                 <li>المحترفون المتعاملون مع عملاء أو شركاء ناطقين بالعربية</li>
                 <li>المسافرون أو المهتمون باللغة والثقافة العربية</li>
             </ul>
+
             <div class="quran-section-wrapper">
                 <h3 class="section-title"><i class="fa fa-book"></i> دروس تلاوة القرآن <span class="animated-crescent fa fa-star"></span></h3>
                 <ul>
@@ -826,8 +691,13 @@
                 <li><i class="fa fa-paypal"></i> al_muafa@yahoo.com</li>
             </ul>
             
-            </div>
+            <div class="visitor-count" id="count">0</div>
+
+        </div>
     </div>
+    <a href="https://wa.me/967775900315" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fa fa-whatsapp"></i>
+    </a>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -850,7 +720,35 @@
                 });
             });
 
-            // Removed visitor counter functionality
+            // Visitor counter functionality
+            function updateCounter() {
+                let count = localStorage.getItem('visitorCount');
+                
+                if (count === null) {
+                    count = 1;
+                } else {
+                    count = parseInt(count) + 1;
+                }
+                
+                localStorage.setItem('visitorCount', count);
+                
+                // Animate the counter
+                const counterElement = document.getElementById('count');
+                let currentCount = parseInt(counterElement.textContent);
+                const increment = Math.ceil(count / 30); // Adjust for desired animation speed
+                
+                const interval = setInterval(() => {
+                    currentCount += increment;
+                    if (currentCount >= count) {
+                        clearInterval(interval);
+                        currentCount = count;
+                    }
+                    counterElement.textContent = currentCount.toLocaleString();
+                }, 30); // Animation speed in milliseconds
+            }
+
+            // Initialize visitor counter on page load
+            updateCounter();
         });
     </script>
 </body>
